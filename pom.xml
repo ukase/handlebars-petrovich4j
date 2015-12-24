@@ -28,6 +28,10 @@
     <packaging>jar</packaging>
 
     <name>Handlebars Helpers</name>
+    <developers>
+        <developer><name>Pavel Uvarov</name><url>https://github.com/webkumo</url></developer>
+    </developers>
+    <url>https://github.com/ukase/handlebars-helpers</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
