@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2015 Konstantin Lepa <konstantin+ukase@lepabox.net>
+  ~
+  ~ This file is part of Handlebars Helpers.
+  ~
+  ~ Ukase is free software: you can redistribute it and/or modify
+  ~ it under the terms of the Apache License 2 as
+  ~ published by the Free Software Foundation, or (at your option)
+  ~ any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ Apache License 2 for more details.
+  ~
+  ~ You should have received a copy of the Apache License 2
+  ~ along with this program. If not, see <http://www.apache.org/licenses/>.
+  -->
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>me.entresol</groupId>
+    <artifactId>handlebars-helpers</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>Handlebars Helpers</name>
+
+    <properties>
+        <handlebars-version>4.0.1</handlebars-version>
+        <lombok-version>4.0.1</lombok-version>
+        <petrovich-version>4.0.1</petrovich-version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.jknack</groupId>
+            <artifactId>handlebars</artifactId>
+            <version>${handlebars-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.petrovich4j</groupId>
+            <artifactId>petrovich4j</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
