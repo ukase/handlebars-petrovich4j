@@ -62,16 +62,19 @@
             <groupId>com.github.jknack</groupId>
             <artifactId>handlebars</artifactId>
             <version>${handlebars.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.github.petrovich4j</groupId>
             <artifactId>petrovich4j</artifactId>
             <version>${petrovich.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
