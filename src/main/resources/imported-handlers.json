@@ -1,3 +1,3 @@
-[
-  "me.entresol.helpers.PetrovichHelper"
-]
+{
+  "petrovich": "me.entresol.helpers.PetrovichHelper"
+}
