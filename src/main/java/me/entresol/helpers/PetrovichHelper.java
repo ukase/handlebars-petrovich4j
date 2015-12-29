@@ -48,18 +48,19 @@ public class PetrovichHelper implements Helper<Map<String, Object>> {
         int start = 0;
         int pos = format.indexOf('{');
         while (pos > -1 && (pos + 2) < format.length()) {
-            sb.append(format, start, pos - 1);
-            String elementValue = format.substring(pos, pos + 2);
+            sb.append(format, start, pos);
+            String elementValue = format.substring(pos, pos + 3);
             NamePart element = resolveElement(elementValue);
             if (element == null) {
-                sb.append(elementValue);
+                sb.append('{');
+                start++;
             } else {
-                String fieldName = options.get(element.attributeName);
+                String fieldName = options.hash(element.getAttributeName(), element.getAttributeName());
                 Object fieldValue = context.get(fieldName);
                 String value = fieldValue == null ? "" : fieldValue.toString().trim();
                 sb.append(applyName(element, value, gender, nameCase));
+                start = pos + 3;
             }
-            start = pos + 2;
             pos = format.indexOf('{', start);
         }
         sb.append(format.substring(start));
@@ -115,7 +116,7 @@ public class PetrovichHelper implements Helper<Map<String, Object>> {
         LastName("{F}", false, ATTR_LAST_NAME, NameType.LastName),
         LastNameShorten("{f}", true, ATTR_LAST_NAME, NameType.LastName),
         Patronymic("{O}", false, ATTR_PATRONIMYC, NameType.PatronymicName),
-        PatronymicShorten("{O}", true, ATTR_PATRONIMYC, NameType.PatronymicName);
+        PatronymicShorten("{o}", true, ATTR_PATRONIMYC, NameType.PatronymicName);
 
         private final String element;
         private final boolean shortName;
