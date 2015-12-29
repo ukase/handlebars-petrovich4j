@@ -32,6 +32,8 @@
     <description>Project with some helpers for Handlebars engine</description>
     <scm>
         <url>https://github.com/ukase/handlebars-helpers.git</url>
+        <connection>scm:git:git@github.com:ukase/handlebars-helpers.git</connection>
+        <developerConnection>scm:git:git@github.com:ukase/handlebars-helpers.git</developerConnection>
     </scm>
 
     <licenses>
@@ -41,6 +43,7 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
     <developers>
         <developer><name>Pavel Uvarov</name><url>https://github.com/webkumo</url></developer>
     </developers>
