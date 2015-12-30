@@ -35,15 +35,12 @@ public class PetrovichHelperTest {
     private static final Helper<Map<String, Object>> HELPER = new PetrovichHelper();
 
     @Test
-    public void nullCaseFemale() throws Exception {
+    public void testNullCaseFemale() throws Exception {
         Map<String, Object> context = new HashMap<>();
         context.put("firstName", "Иоанна");
         context.put("lastName", "Петрова");
         context.put("patronymic", "Олеговна");
         Map<String, Object> hash = new HashMap<>();
-        hash.put("firstName", "firstName");
-        hash.put("lastName", "lastName");
-        hash.put("patronymic", "patronymic");
         hash.put("gender", "FEMALE");
 
         Options options = getOptions(context, hash, TEST_FORMAT);
@@ -52,16 +49,13 @@ public class PetrovichHelperTest {
     }
 
     @Test
-    public void dativeMale() throws Exception {
+    public void testDativeMale() throws Exception {
         Map<String, Object> context = new HashMap<>();
-        context.put("firstName", "Иван");
-        context.put("lastName", "Петров");
-        context.put("patronymic", "Иванович");
         Map<String, Object> hash = new HashMap<>();
         hash.put("case", "Dative");
-        hash.put("firstName", "firstName");
-        hash.put("lastName", "lastName");
-        hash.put("patronymic", "patronymic");
+        hash.put("firstName", "Иван");
+        hash.put("lastName", "Петров");
+        hash.put("patronymic", "Иванович");
         hash.put("gender", "MALE");
 
         Options options = getOptions(context, hash, TEST_FORMAT);
