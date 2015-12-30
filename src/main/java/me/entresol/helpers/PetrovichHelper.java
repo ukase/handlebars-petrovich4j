@@ -36,7 +36,7 @@ public class PetrovichHelper implements Helper<Map<String, Object>> {
     private static final Petrovich PETROVICH = new Petrovich();
     private static final String ATTR_FIRST_NAME = "firstName";
     private static final String ATTR_LAST_NAME = "lastName";
-    private static final String ATTR_PATRONIMYC = "patronymic";
+    private static final String ATTR_PATRONYMIC = "patronymic";
 
     @Override
     public CharSequence apply(Map<String, Object> context, Options options) throws IOException {
@@ -55,10 +55,11 @@ public class PetrovichHelper implements Helper<Map<String, Object>> {
                 sb.append('{');
                 start++;
             } else {
-                String fieldName = options.hash(element.getAttributeName(), element.getAttributeName());
-                Object fieldValue = context.get(fieldName);
-                String value = fieldValue == null ? "" : fieldValue.toString().trim();
-                sb.append(applyName(element, value, gender, nameCase));
+                String fieldValue = options.hash(element.getAttributeName(), null);
+                if (fieldValue == null) {
+                    fieldValue = options.get(element.getAttributeName(), "");
+                }
+                sb.append(applyName(element, fieldValue, gender, nameCase));
                 start = pos + 3;
             }
             pos = format.indexOf('{', start);
@@ -115,8 +116,8 @@ public class PetrovichHelper implements Helper<Map<String, Object>> {
         FirstNameShorten("{i}", true, ATTR_FIRST_NAME, NameType.FirstName),
         LastName("{F}", false, ATTR_LAST_NAME, NameType.LastName),
         LastNameShorten("{f}", true, ATTR_LAST_NAME, NameType.LastName),
-        Patronymic("{O}", false, ATTR_PATRONIMYC, NameType.PatronymicName),
-        PatronymicShorten("{o}", true, ATTR_PATRONIMYC, NameType.PatronymicName);
+        Patronymic("{O}", false, ATTR_PATRONYMIC, NameType.PatronymicName),
+        PatronymicShorten("{o}", true, ATTR_PATRONYMIC, NameType.PatronymicName);
 
         private final String element;
         private final boolean shortName;
