@@ -17,7 +17,7 @@
  * along with this program. If not, see <http://www.apache.org/licenses/>.
  */
 
-package me.entresol.helpers;
+package com.github.ukase.helpers;
 
 import com.github.jknack.handlebars.Context;
 import com.github.jknack.handlebars.Helper;
