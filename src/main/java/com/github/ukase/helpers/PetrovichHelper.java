@@ -29,20 +29,24 @@ import lombok.Getter;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Map;
 import java.util.stream.Collectors;
 
-public class PetrovichHelper implements Helper<Map<String, Object>> {
+public class PetrovichHelper implements Helper<Object> {
     private static final Petrovich PETROVICH = new Petrovich();
     private static final String ATTR_FIRST_NAME = "firstName";
     private static final String ATTR_LAST_NAME = "lastName";
     private static final String ATTR_PATRONYMIC = "patronymic";
 
     @Override
-    public CharSequence apply(Map<String, Object> context, Options options) throws IOException {
+    public CharSequence apply(Object context, Options options) throws IOException {
         Gender gender = parseGender(options);
         Case nameCase = parseCase(options);
-        String format = options.param(0, "{F} {I} {O}");
+        String format;
+        if (context instanceof String) {
+            format = (String) context;
+        } else {
+            format = options.param(0, "{F} {I} {O}");
+        }
         StringBuilder sb = new StringBuilder();
 
         int start = 0;

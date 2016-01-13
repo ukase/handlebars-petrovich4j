@@ -32,7 +32,7 @@ import static org.junit.Assert.*;
 
 public class PetrovichHelperTest {
     private static final String TEST_FORMAT = "{{'}{I}({i}{o}{F})";
-    private static final Helper<Map<String, Object>> HELPER = new PetrovichHelper();
+    private static final Helper<Object> HELPER = new PetrovichHelper();
 
     @Test
     public void testNullCaseFemale() throws Exception {
@@ -63,7 +63,21 @@ public class PetrovichHelperTest {
         assertEquals("Wrong render", "{{'}Ивану(И.И.Петрову)", HELPER.apply(context, options));
     }
 
-    private Options getOptions(Map<String, Object> context, Map<String, Object> hash, String... params) {
+    @Test
+    public void testDativeMaleFormatStringAsContext() throws Exception {
+        Map<String, Object> hash = new HashMap<>();
+        hash.put("case", "Dative");
+        hash.put("firstName", "Иван");
+        hash.put("lastName", "Петров");
+        hash.put("patronymic", "Иванович");
+        hash.put("gender", "MALE");
+
+        Options options = getOptions(TEST_FORMAT, hash, TEST_FORMAT);
+
+        assertEquals("Wrong render", "{{'}Ивану(И.И.Петрову)", HELPER.apply(TEST_FORMAT, options));
+    }
+
+    private Options getOptions(Object context, Map<String, Object> hash, String... params) {
         return new Options(null,
                 "petrovich",
                 TagType.VAR,
