@@ -38,5 +38,13 @@ usage:
     not equals
 {{/equals}}
 
+### In
+usage:
+{{#in object [value1 [value2 [...]]]}}
+    contains
+{{else}}
+    not contains
+{{/equals}}
+
 ## License
 Project is available under Apache License 2
