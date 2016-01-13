@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 Konstantin Lepa <konstantin+ukase@lepabox.net>
+ * Copyright (c) 2016 Konstantin Lepa <konstantin+ukase@lepabox.net>
  *
  * This file is part of Handlebars Helpers.
  *
@@ -25,15 +25,15 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class EqualsHelperTest extends HelperTest {
-    private static final Helper<Object> HELPER = new EqualsHelper();
+public class InHelperTest extends HelperTest{
+    private static final Helper<Object> HELPER = new InHelper();
 
-    public EqualsHelperTest() {
+    public InHelperTest() {
         super(HELPER);
     }
 
     @Test
-    public void testEquals() throws Exception {
+    public void testContains1() throws Exception {
         Object context = "testString";
 
         Options options = getOptions(context, "testString");
@@ -42,19 +42,29 @@ public class EqualsHelperTest extends HelperTest {
     }
 
     @Test
-    public void testNotEquals() throws Exception {
+    public void testContains2() throws Exception {
         Object context = "testString";
 
-        Options options = getOptions(context, "notTestString");
+        Options options = getOptions(context, "someString", "testString");
 
-        assertEquals("Wrong render", INVERSE_TEXT, getResult(context, options));
+        assertEquals("Wrong render", FN_TEXT, getResult(context, options));
     }
 
+
     @Test
-    public void testNulls() throws Exception {
-        Options options = getOptions(null, "someValue");
+    public void testNull() throws Exception {
+        Options options = getOptions(null, "testString");
 
         assertEquals("Wrong render", INVERSE_TEXT, getResult(null, options));
     }
 
+
+    @Test
+    public void testNotContains() throws Exception {
+        Object context = "testString";
+
+        Options options = getOptions(context, "someString");
+
+        assertEquals("Wrong render", INVERSE_TEXT, getResult(context, options));
+    }
 }
