@@ -1,9 +1,7 @@
-# handlebars-helpers
-Custom helpers for {{handlebars.java}}
+# handlebars-helpers-petrovich4j
+Custom {{handlebars.java}} helper that enables Petrovich4j library usage 
 
-## List of implemented helpers
-
-### Petrovich-java
+## Petrovich-java
 usage:
 {{petrovich object formatString case='Accusative' gender=gender [firstName=name lastName=surname patronymic=patronymic]}}
 or
@@ -29,22 +27,6 @@ Possible gender values:
  - FEMALE
  - any other will be passed to Petrovich as Gender.Both type
 
-
-### Equals
-usage:
-{{#equals object value}}
-    equals
-{{else}}
-    not equals
-{{/equals}}
-
-### In
-usage:
-{{#in object [value1 [value2 [...]]]}}
-    contains
-{{else}}
-    not contains
-{{/equals}}
 
 ## License
 Project is available under Apache License 2

@@ -23,13 +23,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.ukase</groupId>
-    <artifactId>handlebars-helpers</artifactId>
-    <version>1.1</version>
+    <artifactId>handlebars-helpers-petrovich4j</artifactId>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>Handlebars Helpers</name>
+    <name>Handlebars Helpers: Petrovich4j</name>
     <url>https://github.com/ukase/handlebars-helpers</url>
-    <description>Project with some helpers for Handlebars engine</description>
+    <description>Project that provides handlebars helper to library Petrovich4j</description>
     <scm>
         <url>https://github.com/ukase/handlebars-helpers.git</url>
         <connection>scm:git:git@github.com:ukase/handlebars-helpers.git</connection>
