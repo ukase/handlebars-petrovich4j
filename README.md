@@ -25,6 +25,7 @@ Can be override by directly passed hash-parameters (with such types)
 Possible gender values:
  - MALE
  - FEMALE
+ - resolve (case insensitive) - try to resolve gender by patronymic (Male will turn if cannot 
  - any other will be passed to Petrovich as Gender.Both type
 
 

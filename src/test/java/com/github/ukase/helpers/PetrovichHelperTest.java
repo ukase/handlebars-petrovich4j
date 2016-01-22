@@ -51,11 +51,7 @@ public class PetrovichHelperTest {
     @Test
     public void testDativeMale() throws Exception {
         Map<String, Object> context = new HashMap<>();
-        Map<String, Object> hash = new HashMap<>();
-        hash.put("case", "Dative");
-        hash.put("firstName", "Иван");
-        hash.put("lastName", "Петров");
-        hash.put("patronymic", "Иванович");
+        Map<String, Object> hash = setHash("Dative", "Иван", "Петров", "Иванович");
         hash.put("gender", "MALE");
 
         Options options = getOptions(context, hash, TEST_FORMAT);
@@ -65,16 +61,49 @@ public class PetrovichHelperTest {
 
     @Test
     public void testDativeMaleFormatStringAsContext() throws Exception {
-        Map<String, Object> hash = new HashMap<>();
-        hash.put("case", "Dative");
-        hash.put("firstName", "Иван");
-        hash.put("lastName", "Петров");
-        hash.put("patronymic", "Иванович");
+        Map<String, Object> hash = setHash("Dative", "Иван", "Петров", "Иванович");
         hash.put("gender", "MALE");
 
         Options options = getOptions(TEST_FORMAT, hash, TEST_FORMAT);
 
         assertEquals("Wrong render", "{{'}Ивану(И.И.Петрову)", HELPER.apply(TEST_FORMAT, options));
+    }
+
+    @Test
+    public void testResolveMaleGender() throws Exception {
+        Map<String, Object> hash = setHash("Dative", "Геннадий", "Сидоров", "Петрович");
+        hash.put("gender", "resolve");
+        Options options = getOptions(TEST_FORMAT, hash, TEST_FORMAT);
+
+        assertEquals("Wrong render", "{{'}Геннадию(Г.П.Сидорову)", HELPER.apply(TEST_FORMAT, options));
+    }
+
+    @Test
+    public void testResolveFemaleGender() throws Exception {
+        Map<String, Object> hash = setHash("Dative", "Татьяна", "Сидорова", "Игоревна");
+        hash.put("gender", "resolve");
+        Options options = getOptions(TEST_FORMAT, hash, TEST_FORMAT);
+
+        assertEquals("Wrong render", "{{'}Татьяне(Т.И.Сидоровой)", HELPER.apply(TEST_FORMAT, options));
+    }
+
+    @Test
+    public void testCannotResolveGender() throws Exception {
+        Map<String, Object> hash = setHash("Dative", "Геннадий", "Сидоров", "Петровичь");
+        hash.put("gender", "resolve");
+        Options options = getOptions(TEST_FORMAT, hash, TEST_FORMAT);
+
+        assertEquals("Wrong render", "{{'}Геннадию(Г.П.Сидорову)", HELPER.apply(TEST_FORMAT, options));
+    }
+
+    private Map<String, Object> setHash(String nameCase, String name, String lastName, String patronymic) {
+        Map<String, Object> hash = new HashMap<>();
+        hash.put("case", nameCase);
+        hash.put("firstName", name);
+        hash.put("lastName", lastName);
+        hash.put("patronymic", patronymic);
+
+        return hash;
     }
 
     private Options getOptions(Object context, Map<String, Object> hash, String... params) {
