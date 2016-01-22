@@ -11,6 +11,11 @@ or
 {{petrovich formatString case='Dative' gender=gender firstName=name lastName=surname patronymic=patronymic}}
 ```
 ([*] - optional parameters)
+Sample:
+{{petrovich '{F} {I} {O}' case='Accusative' gender=user.gender
+                    patronymic=user.middleName
+                    lastName=user.lastName
+                    firstName=user.name}}
 
 formatString accepts:
  - {F} - surname in full form
@@ -20,6 +25,8 @@ formatString accepts:
  - {O} - patronymic in full form
  - {o} - patronymic in initials form
  - other character sequences keeps their state
+ Sample: '{F} {I} {O}' will rendered to string 'LastName Name Patronymic',
+ '{F}&nbsp;{i}{o}' will rendered to string 'LastName&nbsp;N.P.'
 
 By default petrovich helper tries to get next fields from object:
  - firstName (as name)
