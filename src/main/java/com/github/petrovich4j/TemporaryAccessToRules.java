@@ -24,7 +24,7 @@ import static com.github.petrovich4j.Library.PATRONYMIC_NAME_RULES;
 
 /**
  * This class is for temporary access to rules set in Petrovich4j library
- * @TODO remove after pull request accepted or fork released.
+ * TODO remove after pull request accepted or fork released.
  */
 public class TemporaryAccessToRules {
     private static Rule DEFAULT_RULE = new Rule(Gender.Male, null, null);
