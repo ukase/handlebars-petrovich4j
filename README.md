@@ -3,10 +3,15 @@ Custom {{handlebars.java}} helper that enables Petrovich4j library usage
 
 ## Petrovich-java
 usage:
+```
 {{petrovich object formatString case='Accusative' gender=gender [firstName=name lastName=surname patronymic=patronymic]}}
+```
 or
+```
 {{petrovich formatString case='Dative' gender=gender firstName=name lastName=surname patronymic=patronymic}}
+```
 ([*] - optional parameters)
+
 formatString accepts:
  - {F} - surname in full form
  - {f} - surname in initials form
