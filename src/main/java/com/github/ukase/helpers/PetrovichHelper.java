@@ -25,7 +25,6 @@ import com.github.petrovich4j.Case;
 import com.github.petrovich4j.Gender;
 import com.github.petrovich4j.NameType;
 import com.github.petrovich4j.Petrovich;
-import com.github.petrovich4j.TemporaryAccessToRules;
 import lombok.Getter;
 
 import java.io.IOException;
@@ -82,7 +81,7 @@ public class PetrovichHelper implements Helper<Object> {
             if (patronymic == null) {
                 options.get(ATTR_PATRONYMIC, "");
             }
-            return TemporaryAccessToRules.resolve(patronymic);
+            return PETROVICH.gender(patronymic, Gender.Male);
         } else if ("MALE".equals(gender)) {
             return Gender.Male;
         } else if ("FEMALE".equals(gender)) {
