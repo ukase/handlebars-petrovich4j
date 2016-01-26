@@ -19,10 +19,8 @@
 
 package com.github.ukase.helpers;
 
-import com.github.jknack.handlebars.Context;
 import com.github.jknack.handlebars.Helper;
 import com.github.jknack.handlebars.Options;
-import com.github.jknack.handlebars.TagType;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -30,7 +28,7 @@ import java.util.Map;
 
 import static org.junit.Assert.*;
 
-public class PetrovichHelperTest {
+public class PetrovichHelperTest extends HelperTest {
     private static final String TEST_FORMAT = "{{'}{I}({i}{o}{F})";
     private static final Helper<Object> HELPER = new PetrovichHelper();
 
@@ -94,27 +92,5 @@ public class PetrovichHelperTest {
         Options options = getOptions(TEST_FORMAT, hash, TEST_FORMAT);
 
         assertEquals("Wrong render", "{{'}Геннадию(Г.П.Сидорову)", HELPER.apply(TEST_FORMAT, options));
-    }
-
-    private Map<String, Object> setHash(String nameCase, String name, String lastName, String patronymic) {
-        Map<String, Object> hash = new HashMap<>();
-        hash.put("case", nameCase);
-        hash.put("firstName", name);
-        hash.put("lastName", lastName);
-        hash.put("patronymic", patronymic);
-
-        return hash;
-    }
-
-    private Options getOptions(Object context, Map<String, Object> hash, String... params) {
-        return new Options(null,
-                "petrovich",
-                TagType.VAR,
-                Context.newContext(context),
-                null,
-                null,
-                params,
-                hash,
-                null);
     }
 }

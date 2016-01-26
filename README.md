@@ -45,6 +45,23 @@ Possible gender values:
  - resolve (case insensitive) - try to resolve gender by patronymic (Male will turn if cannot 
  - any other will be passed to Petrovich as Gender.Both type
 
+## Petrovich gender conditional
+Usage:
+```
+{{#if (is_gender patronymic_value test_gender)}}
+  gender is equals
+{{else}}
+  gender not equals
+{{/if}}
+```
+
+Where
+- `patranymic_value` is string with patronymic only (other parts of name cannot be used to resolve gender).
+- `test_gender` - string value with gender for equals block (`male` or `female`, case insensitive)
+
+Some notes:
+- if gender is not correct - always else block will executed
+- if patronymic cannot be resolved for gender - male will be used as default
 
 ## License
 Project is available under Apache License 2
