@@ -112,7 +112,10 @@ public class PetrovichHelper implements Helper<Object> {
         if (nameCase == null) {
             return value;
         }
-        return PETROVICH.say(value, namePart.getType(), gender, nameCase);
+
+        return Arrays.stream(value.split("-")).
+                map(name -> PETROVICH.say(name, namePart.getType(), gender, nameCase)).
+                collect(Collectors.joining("-", "", ""));
     }
 
     private NamePart resolveElement(String element) {

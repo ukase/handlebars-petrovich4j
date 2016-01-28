@@ -93,4 +93,15 @@ public class PetrovichHelperTest extends HelperTest {
 
         assertEquals("Wrong render", "{{'}Геннадию(Г.П.Сидорову)", HELPER.apply(TEST_FORMAT, options));
     }
+
+    @Test
+    public void testHyphenInNames() throws Exception {
+        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> hash = setHash("Dative", "Иван-Олег", "Петров-Мухов", "Монгуш-Иванович");
+        hash.put("gender", "MALE");
+
+        Options options = getOptions(context, hash, TEST_FORMAT);
+
+        assertEquals("Wrong render", "{{'}Ивану-Олегу(И.-О.М.-И.Петрову-Мухову)", HELPER.apply(context, options));
+    }
 }
