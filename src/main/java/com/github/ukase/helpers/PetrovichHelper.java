@@ -105,9 +105,7 @@ public class PetrovichHelper implements Helper<Object> {
             return "";
         }
         if (namePart.isShortName()) {
-            return Arrays.stream(value.split("-")).
-                    map(name -> name.substring(0, 1)).
-                    collect(Collectors.joining(".-", "", "."));
+            return value.substring(0, 1).concat(".");
         }
         if (nameCase == null) {
             return value;
@@ -115,7 +113,7 @@ public class PetrovichHelper implements Helper<Object> {
 
         return Arrays.stream(value.split("-")).
                 map(name -> PETROVICH.say(name, namePart.getType(), gender, nameCase)).
-                collect(Collectors.joining("-", "", ""));
+                collect(Collectors.joining("-"));
     }
 
     private NamePart resolveElement(String element) {

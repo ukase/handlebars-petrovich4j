@@ -102,6 +102,6 @@ public class PetrovichHelperTest extends HelperTest {
 
         Options options = getOptions(context, hash, TEST_FORMAT);
 
-        assertEquals("Wrong render", "{{'}Ивану-Олегу(И.-О.М.-И.Петрову-Мухову)", HELPER.apply(context, options));
+        assertEquals("Wrong render", "{{'}Ивану-Олегу(И.М.Петрову-Мухову)", HELPER.apply(context, options));
     }
 }
