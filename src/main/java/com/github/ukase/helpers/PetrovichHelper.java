@@ -63,6 +63,11 @@ public class PetrovichHelper implements Helper<Object> {
                 if (fieldValue == null) {
                     fieldValue = options.get(element.getAttributeName(), "");
                 }
+
+                if ("capitalize".equals(parseTransformation(options))) {
+                    fieldValue = capitalize(fieldValue);
+                }
+
                 sb.append(applyName(element, fieldValue, gender, nameCase));
                 start = pos + 3;
             }
@@ -71,6 +76,14 @@ public class PetrovichHelper implements Helper<Object> {
         sb.append(format.substring(start));
 
         return sb.toString();
+    }
+
+    private String capitalize(String fieldValue) {
+        return (fieldValue == null || fieldValue.isEmpty())
+                ? ""
+                : Arrays.stream(fieldValue.split("-"))
+                    .map(name -> name = Character.toUpperCase(name.charAt(0)) + name.substring(1).toLowerCase())
+                    .collect(Collectors.joining("-"));
     }
 
     private Gender parseGender(Options options) {
@@ -98,6 +111,10 @@ public class PetrovichHelper implements Helper<Object> {
         return Arrays.stream(Case.values()).
                 filter(aCase -> aCase.name().equals(nameCase)).
                 findFirst().orElse(null);
+    }
+
+    private String parseTransformation(Options options) {
+        return options.hash("transform");
     }
 
     private String applyName(NamePart namePart, String value, Gender gender, Case nameCase) {
