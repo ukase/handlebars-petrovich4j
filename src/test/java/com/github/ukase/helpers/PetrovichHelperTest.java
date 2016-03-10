@@ -110,6 +110,7 @@ public class PetrovichHelperTest extends HelperTest {
         Map<String, Object> context = new HashMap<>();
         Map<String, Object> hash = setHash("Dative", "иВаН", "ИВаНоВ", "ИВаНоВиЧ");
         hash.put("gender", "MALE");
+        hash.put("transform", "capitalize");
 
         Options options = getOptions(context, hash, TEST_FORMAT);
 
