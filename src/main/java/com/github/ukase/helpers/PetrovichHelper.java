@@ -64,11 +64,9 @@ public class PetrovichHelper implements Helper<Object> {
                     fieldValue = options.get(element.getAttributeName(), "");
                 }
 
-                if ("capitalize".equals(parseTransformation(options))) {
-                    fieldValue = capitalize(fieldValue);
-                }
+                boolean capitalize = "capitalize".equals(parseTransformation(options));
 
-                sb.append(applyName(element, fieldValue, gender, nameCase));
+                sb.append(applyName(element, fieldValue, gender, nameCase, capitalize));
                 start = pos + 3;
             }
             pos = format.indexOf('{', start);
@@ -79,11 +77,7 @@ public class PetrovichHelper implements Helper<Object> {
     }
 
     private String capitalize(String fieldValue) {
-        return (fieldValue == null || fieldValue.isEmpty())
-                ? ""
-                : Arrays.stream(fieldValue.split("-"))
-                    .map(name -> name = Character.toUpperCase(name.charAt(0)) + name.substring(1).toLowerCase())
-                    .collect(Collectors.joining("-"));
+        return fieldValue.substring(0, 1).toUpperCase() + fieldValue.substring(1).toLowerCase();
     }
 
     private Gender parseGender(Options options) {
@@ -117,19 +111,27 @@ public class PetrovichHelper implements Helper<Object> {
         return options.hash("transform");
     }
 
-    private String applyName(NamePart namePart, String value, Gender gender, Case nameCase) {
+    private String applyName(NamePart namePart, String value, Gender gender, Case nameCase, boolean capitalize) {
         if (value.isEmpty()) {
             return "";
         }
         if (namePart.isShortName()) {
-            return value.substring(0, 1).concat(".");
+            String shortName = value.substring(0, 1).concat(".");
+            if (capitalize) {
+                return shortName.toUpperCase();
+            }
+            return shortName;
         }
         if (nameCase == null) {
+            if (capitalize) {
+                return capitalize(value);
+            }
             return value;
         }
 
         return Arrays.stream(value.split("-")).
                 map(name -> PETROVICH.say(name, namePart.getType(), gender, nameCase)).
+                map(name -> capitalize ? capitalize(name) : name).
                 collect(Collectors.joining("-"));
     }
 
