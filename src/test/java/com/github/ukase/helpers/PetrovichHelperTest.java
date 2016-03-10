@@ -104,4 +104,16 @@ public class PetrovichHelperTest extends HelperTest {
 
         assertEquals("Wrong render", "{{'}Ивану-Олегу(И.М.Петрову-Мухову)", HELPER.apply(context, options));
     }
+
+    @Test
+    public void testCapitalizeName() throws Exception {
+        Map<String, Object> context = new HashMap<>();
+        Map<String, Object> hash = setHash("Dative", "иВаН", "ИВаНоВ", "ИВаНоВиЧ");
+        hash.put("gender", "MALE");
+        hash.put("transform", "capitalize");
+
+        Options options = getOptions(context, hash, TEST_FORMAT);
+
+        assertEquals("Wrong render", "{{'}Ивану(И.И.Иванову)", HELPER.apply(context, options));
+    }
 }
