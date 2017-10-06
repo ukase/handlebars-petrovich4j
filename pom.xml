@@ -24,16 +24,16 @@
 
     <groupId>com.github.ukase</groupId>
     <artifactId>handlebars-helpers-petrovich4j</artifactId>
-    <version>1.6</version>
+    <version>1.7</version>
     <packaging>jar</packaging>
 
     <name>Handlebars Helpers: Petrovich4j</name>
-    <url>https://github.com/ukase/handlebars-helpers</url>
+    <url>https://github.com/ukase/handlebars-petrovich4j</url>
     <description>Project that provides handlebars helper to library Petrovich4j</description>
     <scm>
-        <url>https://github.com/ukase/handlebars-helpers.git</url>
-        <connection>scm:git:git@github.com:ukase/handlebars-helpers.git</connection>
-        <developerConnection>scm:git:git@github.com:ukase/handlebars-helpers.git</developerConnection>
+        <url>https://github.com/ukase/handlebars-petrovich4j.git</url>
+        <connection>scm:git:git@github.com:ukase/handlebars-petrovich4j.git</connection>
+        <developerConnection>scm:git:git@github.com:ukase/handlebars-petrovich4j.git</developerConnection>
     </scm>
 
     <licenses>
@@ -53,7 +53,7 @@
         <java.version>1.8</java.version>
         <lombok.version>1.16.6</lombok.version>
         <handlebars.version>4.0.1</handlebars.version>
-        <petrovich.version>1.1.0</petrovich.version>
+        <petrovich.version>1.1.1</petrovich.version>
         <junit.version>4.12</junit.version>
     </properties>
 
